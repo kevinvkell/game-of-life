@@ -1,6 +1,5 @@
 {
-  "prey_reproduction_factor": 10,
+  "prey_reproduction_factor": 5,
   "prey_maximum_neighbors": 3,
-  "predator_attraction_factor": 5,
   "predator_smell_radius": 10;
 }

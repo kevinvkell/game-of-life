@@ -1,11 +1,19 @@
 class Animal {
     int xCoord;
     int yCoord;
+    int speed;
     String type;
+
+    Animal(int newXCoord, int newYCoord, int newSpeed) {
+        xCoord = newXCoord;
+        yCoord = newYCoord;
+        speed = newSpeed;
+    }
 
     Animal(int newXCoord, int newYCoord) {
         xCoord = newXCoord;
         yCoord = newYCoord;
+        speed = 1;
     }
 
     void setCoordinates(int newXCoord, int newYCoord) {

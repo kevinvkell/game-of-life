@@ -6,7 +6,6 @@ int columnWidth = width/gNumColumns;
 int columnHeight = height/gNumRows;
 int prey_reproduction_factor;
 int prey_maximum_neighbors;
-int predator_attraction_factor;
 int predator_smell_radius;
 
 Grid world;
@@ -17,13 +16,22 @@ void setup() {
 
     configure();
     initializeAnimals();
+    run_generation();
 }
 
 void draw() {
-    
+    if(mousePressed) {
+        run_generation();
+    }
 }
 
-void mouseClicked() {
+void keyPressed() {
+    if(key == RETURN || key == ENTER) {
+        run_generation();
+    }
+}
+
+void run_generation() {
     background(255);
     world.move();
     world.display();
@@ -35,7 +43,6 @@ void configure() {
 
     prey_reproduction_factor = config.getInt("prey_reproduction_factor");
     prey_maximum_neighbors = config.getInt("prey_maximum_neighbors");
-    predator_attraction_factor = config.getInt("predator_attraction_factor");
     predator_smell_radius = config.getInt("predator_smell_radius");
 }
 

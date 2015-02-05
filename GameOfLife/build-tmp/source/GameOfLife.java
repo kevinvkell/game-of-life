@@ -22,7 +22,6 @@ int columnWidth = width/gNumColumns;
 int columnHeight = height/gNumRows;
 int prey_reproduction_factor;
 int prey_maximum_neighbors;
-int predator_attraction_factor;
 int predator_smell_radius;
 
 Grid world;
@@ -33,13 +32,22 @@ public void setup() {
 
     configure();
     initializeAnimals();
+    run_generation();
 }
 
 public void draw() {
-    
+    if(mousePressed) {
+        run_generation();
+    }
 }
 
-public void mouseClicked() {
+public void keyPressed() {
+    if(key == RETURN || key == ENTER) {
+        run_generation();
+    }
+}
+
+public void run_generation() {
     background(255);
     world.move();
     world.display();
@@ -51,7 +59,6 @@ public void configure() {
 
     prey_reproduction_factor = config.getInt("prey_reproduction_factor");
     prey_maximum_neighbors = config.getInt("prey_maximum_neighbors");
-    predator_attraction_factor = config.getInt("predator_attraction_factor");
     predator_smell_radius = config.getInt("predator_smell_radius");
 }
 
@@ -107,11 +114,19 @@ public int getValidY(int questionableY) {
 class Animal {
     int xCoord;
     int yCoord;
+    int speed;
     String type;
+
+    Animal(int newXCoord, int newYCoord, int newSpeed) {
+        xCoord = newXCoord;
+        yCoord = newYCoord;
+        speed = newSpeed;
+    }
 
     Animal(int newXCoord, int newYCoord) {
         xCoord = newXCoord;
         yCoord = newYCoord;
+        speed = 1;
     }
 
     public void setCoordinates(int newXCoord, int newYCoord) {

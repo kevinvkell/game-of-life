@@ -10,8 +10,8 @@
     "type": "prey"
   },
   {
-    "xCoord": 0,
-    "yCoord": 0,
+    "xCoord": 40,
+    "yCoord": 40,
     "type": "predator"
   },
   {
