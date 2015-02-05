@@ -1,0 +1,22 @@
+[
+  {
+    "xCoord": 10,
+    "yCoord": 10,
+    "type": "prey"
+  },
+  {
+    "xCoord": 5,
+    "yCoord": 5,
+    "type": "prey"
+  },
+  {
+    "xCoord": 0,
+    "yCoord": 0,
+    "type": "predator"
+  },
+  {
+    "xCoord": 35,
+    "yCoord": 35,
+    "type": "predator"
+  }
+]
