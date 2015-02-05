@@ -82,7 +82,10 @@ class Animal {
         int xMovement = int(random(3)) - 1;
         int yMovement = int(random(3)) - 1;
 
-        this.move_to_location(xMovement, yMovement);
+        boolean successfull_move = int(random(speed)) == 0;
+        if(successfull_move) {
+            this.move_to_location(xMovement, yMovement);
+        }
     }
 
     void display() {
@@ -97,6 +100,11 @@ class Animal {
 class Predator extends Animal {
     Predator(int newXCoord, int newYCoord) {
         super(newXCoord, newYCoord);
+        type = "predator";
+    }
+
+    Predator(int newXCoord, int newYCoord, int newSpeed) {
+        super(newXCoord, newYCoord, newSpeed);
         type = "predator";
     }
 
@@ -146,6 +154,11 @@ class Prey extends Animal {
         type = "prey";
     }
 
+    Prey(int newXCoord, int newYCoord, int newSpeed) {
+        super(newXCoord, newYCoord, newSpeed);
+        type = "prey";
+    }
+
     void display() {
         int drawXCoord = xCoord * columnWidth;
         int drawYCoord = yCoord * columnHeight;
@@ -172,7 +185,10 @@ class Prey extends Animal {
 
         boolean successfull_courtship = int(random(prey_reproduction_factor)) == 0;
         if(significant_other != null &&  successfull_courtship) {
-            world.addAnimal(new Prey(xCoord, yCoord));
+            int newSpeed = (speed + significant_other.speed)/2;
+            newSpeed += int(random(prey_mutation_factor)) - (prey_mutation_factor/2);
+
+            world.addAnimal(new Prey(xCoord, yCoord, newSpeed));
         }
     }
 }

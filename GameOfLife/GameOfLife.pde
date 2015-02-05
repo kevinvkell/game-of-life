@@ -7,6 +7,7 @@ int columnHeight = height/gNumRows;
 int prey_reproduction_factor;
 int prey_maximum_neighbors;
 int predator_smell_radius;
+int prey_mutation_factor;
 
 Grid world;
 
@@ -44,6 +45,7 @@ void configure() {
     prey_reproduction_factor = config.getInt("prey_reproduction_factor");
     prey_maximum_neighbors = config.getInt("prey_maximum_neighbors");
     predator_smell_radius = config.getInt("predator_smell_radius");
+    prey_mutation_factor = config.getInt("prey_mutation_factor");
 }
 
 void initializeAnimals() {
@@ -52,10 +54,10 @@ void initializeAnimals() {
     for(int i=0; i<data.size(); i++) {
         JSONObject object = data.getJSONObject(i);
         if(object.getString("type").equals("prey")) {
-            world.addAnimal(new Prey(object.getInt("xCoord"), object.getInt("yCoord")));
+            world.addAnimal(new Prey(object.getInt("xCoord"), object.getInt("yCoord"), object.getInt("speed")));
         }
         if(object.getString("type").equals("predator")) {
-            world.addAnimal(new Predator(object.getInt("xCoord"), object.getInt("yCoord")));
+            world.addAnimal(new Predator(object.getInt("xCoord"), object.getInt("yCoord"), object.getInt("speed")));
         }
     }
 }

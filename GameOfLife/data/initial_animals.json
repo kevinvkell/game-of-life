@@ -2,21 +2,25 @@
   {
     "xCoord": 10,
     "yCoord": 10,
+    "speed": 1,
     "type": "prey"
   },
   {
-    "xCoord": 5,
-    "yCoord": 5,
+    "xCoord": 8,
+    "yCoord": 8,
+    "speed": 1,
     "type": "prey"
   },
   {
     "xCoord": 40,
     "yCoord": 40,
+    "speed": 7,
     "type": "predator"
   },
   {
     "xCoord": 35,
     "yCoord": 35,
+    "speed": 7,
     "type": "predator"
   }
 ]
