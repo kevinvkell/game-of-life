@@ -1,6 +1,11 @@
 {
-  "prey_reproduction_factor": 5,
+  "width": 500,
+  "height": 500,
+  "num_columns": 50,
+  "num_rows": 50,
+  "prey_reproduction_factor": 16,
   "prey_maximum_neighbors": 3,
-  "prey_mutation_factor": 2,
-  "predator_smell_radius": 10
+  "prey_mutation_factor": 10,
+  "prey_smell_radius": 4,
+  "predator_smell_radius": 6
 }

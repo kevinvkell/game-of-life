@@ -2,25 +2,61 @@
   {
     "xCoord": 10,
     "yCoord": 10,
-    "speed": 1,
-    "type": "prey"
-  },
-  {
-    "xCoord": 8,
-    "yCoord": 8,
-    "speed": 1,
-    "type": "prey"
-  },
-  {
-    "xCoord": 40,
-    "yCoord": 40,
     "speed": 7,
+    "type": "prey"
+  },
+  {
+    "xCoord": 9,
+    "yCoord": 9,
+    "speed": 7,
+    "type": "prey"
+  },
+  {
+    "xCoord": 17,
+    "yCoord": 17,
+    "speed": 1,
+    "type": "prey"
+  },
+  {
+    "xCoord": 15,
+    "yCoord": 15,
+    "speed": 1,
     "type": "predator"
   },
   {
     "xCoord": 35,
     "yCoord": 35,
-    "speed": 7,
+    "speed": 10,
+    "type": "predator"
+  },
+  {
+    "xCoord": 35,
+    "yCoord": 35,
+    "speed": 10,
+    "type": "predator"
+  },
+  {
+    "xCoord": 0,
+    "yCoord": 35,
+    "speed": 1,
+    "type": "predator"
+  },
+  {
+    "xCoord": 35,
+    "yCoord": 0,
+    "speed": 10,
+    "type": "predator"
+  },
+  {
+    "xCoord": 30,
+    "yCoord": 30,
+    "speed": 5,
+    "type": "predator"
+  },
+  {
+    "xCoord": 35,
+    "yCoord": 35,
+    "speed": 5,
     "type": "predator"
   }
 ]

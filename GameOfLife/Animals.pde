@@ -117,7 +117,10 @@ class Predator extends Animal {
             int xMovement = xDiff == 0 ? 0 : xDiff/abs(xDiff);
             int yMovement = yDiff == 0 ? 0 : yDiff/abs(yDiff);
 
-            this.move_to_location(xMovement, yMovement);
+            boolean successfull_move = int(random(speed)) == 0;
+            if(successfull_move) {
+                this.move_to_location(xMovement, yMovement);
+            }
         }
         else {
             super.move();
@@ -128,7 +131,8 @@ class Predator extends Animal {
         int drawXCoord = xCoord * columnWidth;
         int drawYCoord = yCoord * columnHeight;
 
-        fill(255, 0, 0);
+        int speed_factor = 255 - int(255/speed);
+        fill(255, speed_factor, speed_factor);
         rect(drawXCoord, drawYCoord, columnWidth, columnHeight);
     }
 
@@ -143,6 +147,7 @@ class Predator extends Animal {
         }
 
         if(dinner != null) {
+            dataManager.log_dinner();
             world.removeAnimal(dinner.xCoord, dinner.yCoord);
         }
     }
@@ -159,11 +164,31 @@ class Prey extends Animal {
         type = "prey";
     }
 
+    void move() {
+        Animal nearest_predator = this.getNearest("predator");
+
+        if(nearest_predator != null) {
+            int xDiff = xCoord - nearest_predator.xCoord;
+            int yDiff = yCoord - nearest_predator.yCoord;
+            int xMovement = xDiff == 0 ? 0 : xDiff/abs(xDiff);
+            int yMovement = yDiff == 0 ? 0 : yDiff/abs(yDiff);
+
+            boolean successfull_move = int(random(speed)) == 0;
+            if(successfull_move) {
+                this.move_to_location(xMovement, yMovement);
+            }
+        }
+        else {
+            super.move();
+        }
+    }
+
     void display() {
         int drawXCoord = xCoord * columnWidth;
         int drawYCoord = yCoord * columnHeight;
 
-        fill(0, 0, 255);
+        int speed_factor = 255 - int(255/speed);
+        fill(speed_factor, speed_factor, 255);
         rect(drawXCoord, drawYCoord, columnWidth, columnHeight);
     }
 
@@ -187,6 +212,9 @@ class Prey extends Animal {
         if(significant_other != null &&  successfull_courtship) {
             int newSpeed = (speed + significant_other.speed)/2;
             newSpeed += int(random(prey_mutation_factor)) - (prey_mutation_factor/2);
+            if(newSpeed <= 0) {
+                newSpeed = 1;
+            }
 
             world.addAnimal(new Prey(xCoord, yCoord, newSpeed));
         }
