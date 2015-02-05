@@ -1,11 +1,13 @@
 class DataManager {
     float average_prey_speed;
-    float moving_average_prey_speed;
     int slowest_prey_speed;
     int animals_eaten;
-    int window = 10;
+    float moving_animals_eaten;
+    int max_animals_eaten = 0;
+    int window = 50;
     int counter = 0;
     float speed_history[] = new float[window];
+    int animals_eaten_history[] = new int[window];
 
     DataManager() {
         animals_eaten = 0;
@@ -35,40 +37,59 @@ class DataManager {
     }
 
     void end_cycle() {
+        this.move_average();
+        if(max_animals_eaten < moving_animals_eaten) {
+            max_animals_eaten = int(moving_animals_eaten);
+        }
         animals_eaten = 0;
-        this.move_average(average_prey_speed);
     }
 
     void display_data() {
-        print("average: ", average_prey_speed, "\n");
-        print("slowest: ", slowest_prey_speed, "\n");
-        print("moving: ", moving_average_prey_speed, "\n");
-        int bar_height = 0;
+        print("eaten: ", animals_eaten, "\n");
+        print("max eaten: ", max_animals_eaten, "\n");
+        print("moving eaten: ", moving_animals_eaten, "\n");
+
+        int speed_bar_height = 0;
         if(average_prey_speed != 0) {
-            bar_height = int(height * (1.0/pow(average_prey_speed, 0.5)));
-            print("bar height: ", bar_height, '\n');
+            speed_bar_height = int(height * (1.0/pow(average_prey_speed, 0.5)));
+        }
+
+        int eaten_bar_height = 0;
+        if(moving_animals_eaten != 0) {
+            eaten_bar_height = int(height * (moving_animals_eaten/max_animals_eaten));
+            print("bar height: ", eaten_bar_height, '\n');
         }
 
         fill(55);
-        rect(width, height - bar_height, panel_width, bar_height);
+        rect(width, height - speed_bar_height, panel_width/2, speed_bar_height);
 
-        textSize(32);
+        textSize(16);
         fill(255);
-        text(average_prey_speed, int(width + panel_width/4.0), int(height - bar_height/4.0)); 
+        text(average_prey_speed, int(width + panel_width/8.0), int(height - speed_bar_height/4.0));
+
+        fill(120);
+        rect(width + panel_width/2, height - eaten_bar_height, panel_width/2, eaten_bar_height);
+
+        textSize(16);
+        fill(255);
+        text(moving_animals_eaten, int(width + panel_width/2.0), int(height - eaten_bar_height/4.0));
     }
 
-    void move_average(float new_item) {
-        float sum = 0;
+    void move_average() {
+        int sum = 0;
 
-        speed_history[counter] = new_item;
+        animals_eaten_history[counter] = animals_eaten;
+        print("added ", animals_eaten, "\n");
+
         if(++counter >= window) {
             counter = 0;
         }
 
-        for(int i=0; i<window; i++){
-            sum += speed_history[i];
+        for(int i=0; i<window; i++) {
+            sum += animals_eaten_history[i];
         }
 
-        moving_average_prey_speed = sum/window;
+        print("sum: ", sum, "\n");
+        moving_animals_eaten = sum;
     }
 }
