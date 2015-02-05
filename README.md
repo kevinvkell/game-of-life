@@ -24,20 +24,20 @@ There are two JSON files that hold the configuration for the game.
 
 <code>config.json</code> determines the board size, number of columns, and general prey/predator characteristics
 The config variables and animal traits are as follows:
-    * prey_reproduction_factor: probability that two adjacent prey will reproduce 
+  * prey_reproduction_factor: probability that two adjacent prey will reproduce 
         a value of 1 gives 100% chance and a value of 2 gives 50% chance
-    * prey_maximum_neighbors: max number of neighbors a prey can have before it will die
-    * prey_mutation_factor: a greater factor will make prey offspring have more variable speed
+  * prey_maximum_neighbors: max number of neighbors a prey can have before it will die
+  * prey_mutation_factor: a greater factor will make prey offspring have more variable speed
         a value of 2 will have a chance of adding or subtracting 1 from the average speed of the parents
-    * predator_smell_radius: a predator will move randomly unless a prey is within this radius at which point it will
+  * predator_smell_radius: a predator will move randomly unless a prey is within this radius at which point it will
     move towards the prey
 
 <code>initial_animals.json</code> determines the starting configuration of the board
     Animals are specified as json objects. Each object specifies several traits. 
-    * xCoord and yCoord: The starting coordinates of the animal. Must be within the size defined in <code>config.json</code>
-    * speed: The speed of an animal is the chance that it will move during a given cycle.
+  * xCoord and yCoord: The starting coordinates of the animal. Must be within the size defined in <code>config.json</code>
+  * speed: The speed of an animal is the chance that it will move during a given cycle.
         A value of 1 gives 100% chance and a value of 2 gives 50% chance.
-    * type: The type of animal to be created.
+  * type: The type of animal to be created.
 
 ##Biological Notes
 This version of the game of life is supposed to explore the results of evolutionary pressures. Depending on how the game is configured, the prey will evolve different speeds. Using the bars on the right of the game, you can see that when there is a big spike in prey being eaten, the speed usually spikes as well. Depending on the starting configuration, the evolutionary pressures may be stronger or weaker, causing the prey to evolve faster or slower. 
