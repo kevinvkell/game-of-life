@@ -45,10 +45,6 @@ class DataManager {
     }
 
     void display_data() {
-        print("eaten: ", animals_eaten, "\n");
-        print("max eaten: ", max_animals_eaten, "\n");
-        print("moving eaten: ", moving_animals_eaten, "\n");
-
         int speed_bar_height = 0;
         if(average_prey_speed != 0) {
             speed_bar_height = int(height * (1.0/pow(average_prey_speed, 0.5)));
